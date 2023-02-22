@@ -20,10 +20,22 @@ class Admin extends CI_Controller {
 	public function index(){
 
 	 	$data['emptotal'] = $this->am->getTotalEmp();
+		$data['deptotal'] = $this->am->getTotalDepartment();
+		$data['destotal'] = $this->am->getTotalDesignation();
+		$data['performancetotal'] = $this->am->getTotalPerformance();
+
 		$data['topper'] = $this->am->getTopPerformance();
 		$data['lowper'] = $this->am->getLowPerformance();
-
 		$data['empdata'] = $this->am->PerformanceResultDashboard();
+
+		$data['grateful'] = $this->am->getGratefulPerformance();
+		$data['good'] = $this->am->getGoodPerformance();
+		$data['average'] = $this->am->getAveragePerformance();
+		
+		// echo '<pre>';
+		// print_r($data);
+		// echo '</pre>';
+		// exit;
 
 		$this->load->view('admin/include/header');
 		$this->load->view('admin/include/menu');
@@ -81,6 +93,10 @@ class Admin extends CI_Controller {
 			$data['employee_designation'] = $this->input->post('employee_designation');
 			$data['employee_doj'] = $this->input->post('employee_doj');
 			$data['employee_dot'] = $this->input->post('employee_dot');
+
+			$data['emp_password'] = $this->input->post('emp_password');
+			$data['emp_level'] = $this->input->post('emp_level');
+
 			$data['employee_status'] = $this->input->post('employee_status');
 
 			if((!empty($_FILES['employee_image']['name']))){
@@ -93,8 +109,8 @@ class Admin extends CI_Controller {
 			$this->upload->do_upload();
 
 			if($this->am->uploadEmpDetails($data)){
-				$this->session->set_flashdata('emp_upload_success', 'Uploaded Successfully!!!');
-				redirect('Admin/addEmployees');
+				$this->session->set_flashdata('emp_upload_success', 'Employee Uploaded Successfully!!!');
+				redirect('Admin/employeesList');
 			}else{
 				$this->session->set_flashdata('emp_not_uploaded', 'Please Try Again!');
 				redirect('Admin/addEmployees');
@@ -121,7 +137,7 @@ class Admin extends CI_Controller {
 		  $this->pagination->initialize($config);
 		  $data['empdata'] = $this->am->employeesListData($config['per_page'],$this->uri->segment(3));
 
-		//   $data['departments'] = $this->am->getEmpDepartment();
+		// $data['departments'] = $this->am->getEmpDepartment();
 		  $this->load->view('admin/include/header');
 		  $this->load->view('admin/include/menu');
 		  $this->load->view('admin/employees-list', $data);
@@ -216,8 +232,20 @@ class Admin extends CI_Controller {
 	    public function showEmployeeInfo($id){
 			$data['empdata'] = $this->am->getEmpDetails($id);
 			$data['departments'] = $this->am->getEmpDepartment();
-
 			$data['empinfo'] = $this->am->getEmployeesPerformanceInfo($id);
+
+			$ManagerSignature = $this->am->getManagerSignature($id);
+
+			if($ManagerSignature){
+				$data['signature_img'] = $this->am->getManagerSignature($id);
+			}else{
+				$data['signature_img'] = 0;
+			}
+
+			// echo '<pre>';
+			// print_r($data);
+			// echo '</pre>';
+			// exit;
 
 			$this->load->view('admin/include/header');
 			$this->load->view('admin/include/menu');
@@ -884,10 +912,8 @@ class Admin extends CI_Controller {
 
 
 		$sumTotal = $communication_data['communication_emp_avg'] + $productivity_data['productivity_emp_avg'] + $quality_data['quality_emp_avg'] + $knowledge_data['knowledge_emp_avg'] + $software_data['software_emp_avg'] + $dependability_data['dependability_emp_avg'] + $time_management_data['time_management_emp_avg'] + $adaptability_data['p_adaptability_emp_avg'] + $initiative_proactive_data['p_initiative_proactive_emp_avg'] + $creativity_problem_solving_data['p_creativity_problem_solving_emp_avg']; 
-		$avgTotal = $sumTotal / 37;
+		$avgTotal = $sumTotal / 10;
 		$data['main_emp_avg'] = number_format((float)$avgTotal, 2, '.', '');
-
-
 
 
 		if($this->am->uploadEmployeePerformance($data)){
@@ -956,11 +982,90 @@ class Admin extends CI_Controller {
 		$data['departments'] = $this->am->getEmpDepartment();
 		$data['empinfo'] = $this->am->getEmployeesPerformanceInfo($id);
 
+		$ManagerSignature = $this->am->getManagerSignature($id);
+
+		if($ManagerSignature){
+			$data['signature_img'] = $this->am->getManagerSignature($id);
+		}else{
+			$data['signature_img'] = 0;
+		}
+
 		$this->load->view('admin/include/header');
 		$this->load->view('admin/print-employee-details', $data);
 		$this->load->view('admin/include/footer');
 	}
 
+	// Manager Upload Signature
+
+	public function uploadManagerSignature(){
+
+		$id = $this->input->post('employee_id');
+		$data['employee_id'] = $this->input->post('employee_id');
+
+		$config = [
+			'upload_path' => './upload',
+			'allowed_type' => 'jpg|png|jpeg',
+			'quality' => '50%',
+			'width' => '1600',
+			'height' => '800'
+		];
+
+		if((!empty($_FILES['p_signature_img']['name']))){
+			$check = uploadimgfile("p_signature_img",$folder="upload",$prefix="proimg_");
+			$link  = $check['data']['name'];
+			$data['p_signature_img'] = $link;
+		}
+
+		$this->load->library('upload', $config);
+		$this->upload->do_upload();
+
+		$res = $this->am->postManagerSignature($data);
+
+		if($res){
+			$this->session->set_flashdata('signature_upload_success', 'Signature Uploaded Successfully!!!');
+			redirect('Admin/showEmployeeInfo/'.$id);
+		}else{
+			$this->session->set_flashdata('signature_not_uploaded', 'Please Try Again!');
+			redirect('Admin/showEmployeeInfo/'.$id);
+		}
+	}
+
+	// public function updateManagerSignature(){
+
+	// 	    $empID = $this->input->post('employee_id');
+	// 	    if(!empty($_FILES['p_signature_img']['name'])){
+
+	// 		$upload = $this->am->get_SignatureImg_id($empID);
+
+	// 		if(file_exists($upload->p_signature_img)){
+	// 				if(unlink($upload->p_signature_img)) {
+	// 					$check = uploadimgfile("p_signature_img",$folder="upload",$prefix="proimg_");
+	// 					$link = $check['data']['name'];
+	// 					$data['p_signature_img'] = $link;
+	// 				}
+	// 			}
+	// 		}
+
+	// 		if($this->am->editManagerSignature($data, $empID)){
+	// 			$this->session->set_flashdata('signature_update_success', 'Employee Detail Updated Successfully!!!');
+	// 			return redirect('Admin/showEmployeeInfo/'.$empID);
+	// 		}else{
+	// 			$this->session->set_flashdata('signature_not_updated', 'Please Try Again!');
+	// 			return redirect('Admin/showEmployeeInfo/'.$empID);
+	// 		}
+	// }
+
+	public function deleteManagerSignature(){
+			$id = $this->input->post('employee_id');
+			$result = $this->am->deleteSignatureDB($id);
+			if($result){
+				$this->session->set_flashdata('signature_delete_success', 'Signature Deleted Successfully!!!');
+				redirect('Admin/showEmployeeInfo/'.$id);
+			}else{
+				$this->session->set_flashdata('signature_not_uploaded', 'Please Try Again!');
+				redirect('Admin/showEmployeeInfo/'.$id);
+			}
+	}
 
 }
 ?>
