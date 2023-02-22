@@ -177,9 +177,6 @@ a.comments_btn_td i {
 span.emp_edit_btn a i {
     color: #3264c8;
     font-size: 22px;
-    box-shadow: 0px 2px 8px #3379ff;
-    border-radius: 100px;
-    padding: 6px;
     transition: 0.6s;
 }
 span.emp_edit_btn a:hover i{
@@ -193,8 +190,9 @@ span.emp_edit_btn a:hover i{
 .remove_bb td {
     border-bottom: none;
 }
-tr.remove_bb {
-    line-height: 5px;
+tr.remove_bb.padd_bb td p{
+    margin-bottom: 0px !important;
+    font-size: 12px;
 }
 th.head-center-per {
     text-align: center;
@@ -253,4 +251,74 @@ input.form-check-input.checked-edit {
 }
 .card-body-print {
     padding: 10px 1.5rem !important;
+}
+tr.padd_bb td {
+    padding: 6px 10px !important;
+}
+.nav-align-top {
+    margin-bottom: 30px;
+}
+.print_head_p h4 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+.print_top_head {
+    font-size: 16px;
+}
+.signature_img_sec img {
+    max-width: 250px;
+}
+.dt-employee i {
+    font-size: 35px;
+    color: #73dd3a;
+    background-color: #eefbe7;
+    border-radius: 10px;
+    padding: 5px;
+}
+.dt-departments i{
+    font-size: 35px;
+    color: #03c3ec;
+    background-color: #e0f7fc;
+    border-radius: 10px;
+    padding: 5px;
+}
+.dt-designation i{
+    font-size: 35px;
+    color: #696cff;
+    background-color: #ededff;
+    border-radius: 10px;
+    padding: 5px;
+}
+.dt-performance i{
+    font-size: 35px;
+    color: #ffac02;
+    background-color: #fff5e0;
+    border-radius: 10px;
+    padding: 5px;
+}
+.emp-list-addbtn {
+    text-align: right;
+    display: block;
+    position: relative;
+    top: -20px;
+}
+.emp-list-addbtn a{
+    border-color: #3264c8;
+}
+.emp-list-addbtn a:hover {
+    color: #ffff;
+    background-color: #3264c8;
+    border-color: #3264c8;
+}
+.text-swich-login{
+    padding: 20px;
+    color: #fff;
+    font-weight: 600;
+    float: right;
+    margin-right: 20px;
+}
+.text-swich-login a{
+   
+    color: #fff;
+    font-weight: 600;
 }
