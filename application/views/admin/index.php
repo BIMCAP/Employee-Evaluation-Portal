@@ -2,22 +2,93 @@
           <div class="content-wrapper">
             <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
-                <!-- <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
-                  <div class="card h-100">
-                    <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                      <div class="card-title mb-0">
-                        <h5 class="m-0 me-2">Average Assessment</h5>
+              <div class="col-lg-3 col-md-6 col-6 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="card-title d-flex align-items-start justify-content-between">
+                      <div class="avatar dt-employee flex-shrink-0 mb-2">
+                      <i class="bx bx-user"></i>
+                      </div>
+                      <div class="dropdown">
+                        <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3" style="">
+                          <a class="dropdown-item" href="<?php echo base_url('Admin/employeesList'); ?>">View More</a>
+                        </div>
                       </div>
                     </div>
-                    <div class="card-body">
-                      <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div id="piechart" style="width: 400px; height: 200px;"></div>
-                      </div>
-                    </div>
+                    <span class="fw-semibold d-block mb-2">Total Employee</span>
+                    <h3 class="card-title mb-2"><?php echo $emptotal; ?></h3>
                   </div>
-                </div> -->
-                
-                <div class="col-md-6 col-lg-4 order-2 mb-4">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-6 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="card-title d-flex align-items-start justify-content-between">
+                      <div class="avatar dt-departments flex-shrink-0 mb-2">
+                      <i class="bx bx-data"></i>
+                      </div>
+                      <div class="dropdown">
+                        <button class="btn p-0" type="button" id="cardOpt6" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                          <a class="dropdown-item" href="<?php echo base_url('Admin/departmentsList'); ?>">View More</a>
+                        </div>
+                      </div>
+                    </div>
+                    <span class="fw-semibold d-block mb-2">Total Departments</span>
+                    <h3 class="card-title text-nowrap mb-1"><?php echo $deptotal; ?></h3>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-6 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="card-title d-flex align-items-start justify-content-between">
+                      <div class="avatar dt-designation flex-shrink-0 mb-2">
+                      <i class="bx bxs-component"></i>                      
+                    </div>
+                      <div class="dropdown">
+                        <button class="btn p-0" type="button" id="cardOpt6" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                          <a class="dropdown-item" href="<?php echo base_url('Admin/designationList'); ?>">View More</a>
+                        </div>
+                      </div>
+                    </div>
+                    <span class="fw-semibold d-block mb-2">Total Designation</span>
+                    <h3 class="card-title text-nowrap mb-1"><?php echo $destotal; ?></h3>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-6 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="card-title d-flex align-items-start justify-content-between">
+                      <div class="avatar dt-performance flex-shrink-0 mb-2">
+                      <i class="bx bx-bar-chart-alt"></i>                      
+                    </div>
+                      <div class="dropdown">
+                        <button class="btn p-0" type="button" id="cardOpt6" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                          <a class="dropdown-item" href="<?php echo base_url('Admin/employeesPerformanceResultList'); ?>">View More</a>
+                        </div>
+                      </div>
+                    </div>
+                    <span class="fw-semibold d-block mb-2">Total Performance</span>
+                    <h3 class="card-title text-nowrap mb-1"><?php echo $performancetotal; ?></h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-6 order-2 mb-4">
                   <div class="card h-100">
                     <div class="card-header d-flex align-items-center justify-content-between">
                       <h5 class="card-title m-0 me-2">Top 5 Performance</h5>
@@ -57,7 +128,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6 col-lg-4 order-2 mb-4">
+                <div class="col-md-6 col-lg-6 order-2 mb-4">
                   <div class="card h-100">
                     <div class="card-header d-flex align-items-center justify-content-between">
                       <h5 class="card-title m-0 me-2">Top 5 Low Performance</h5>
@@ -135,9 +206,16 @@
                   </div>
                 </div>
 
-
+                <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                          <div>
+                              <div id="piechart" style="width: 100%; height: 400px;"></div>
+                          </div>
+                    </div>
+                  </div>
+                </div>          
                 <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
-
                     <section class="color_indicators_sec">
                         <span>
                             <img src="<?php echo base_url('assets_admin/icons/danger.png'); ?>" alt=""> &nbsp;<b>ASSESSMENT < 2</b> &nbsp;&nbsp;
@@ -145,7 +223,6 @@
                             <img src="<?php echo base_url('assets_admin/icons/success.png'); ?>" alt=""> &nbsp;<b>ASSESSMENT > 3</b> &nbsp;&nbsp;
                         </span>
                     </section>
-                    <h5 class="">Recently Added</h5>
                       <div class="card">
                           <div class="table-responsive text-nowrap">
                               <table class="table">
@@ -181,6 +258,7 @@
                                                       <strong><a href="<?php echo base_url('Admin/showEmployeeInfo/'.$data->main_employee_id); ?>"><?php echo $data->employee_first_name; ?> <?php echo $data->employee_last_name; ?>    <i class='bx bx-link' ></i></a></strong>
                                                   </div>
                                               </td>
+
                                               <td><?php echo $data->department_name; ?></td>
                                               <td><?php echo $data->employee_designation; ?></td>
 

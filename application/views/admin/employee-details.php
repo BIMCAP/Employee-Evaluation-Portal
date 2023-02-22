@@ -1,11 +1,11 @@
 
           <div class="content-wrapper">
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"><a href="<?php echo base_url('Admin/employeesList'); ?>"><i class='bx bx-left-arrow-alt'></i> Employee List</a> /</span> Employee Details</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"><a href="<?php echo base_url('Admin'); ?>"><i class='bx bx-left-arrow-alt'></i> Dashboard</a> / <a href="<?php echo base_url('Admin/employeesList'); ?>"> Employee List</a> /</span> Employee Details</h4>
               <div class="row">
                 <div class="col-md-12">
-                  <div class="col-md-12">
-                    <?php if($uploaded = $this->session->flashdata('emp_update_success')): ?>
+
+                <?php if($uploaded = $this->session->flashdata('emp_update_success')): ?>
                     <div class="alert alert-success alert-dismissible" role="alert">
                       <strong><?php echo $uploaded; ?></strong>
                       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -16,7 +16,7 @@
                         </div>
                       <?php endif; ?>
                     </div>
-                  <div class="col-md-12">
+                  
                     <?php if($uploaded = $this->session->flashdata('emp_update_score_success')): ?>
                     <div class="alert alert-success alert-dismissible" role="alert">
                       <strong><?php echo $uploaded; ?></strong>
@@ -27,12 +27,35 @@
                           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                       <?php endif; ?>
-                    </div>
+                   
+                      <?php if($uploaded = $this->session->flashdata('signature_upload_success')): ?>
+                      <div class="alert alert-success alert-dismissible" role="alert">
+                        <strong><?php echo $uploaded; ?></strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <?php elseif($tryAgain = $this->session->flashdata('signature_not_uploaded')): ?>
+                          <div class="alert alert-danger alert-dismissible" role="alert">
+                          <strong><?php echo $tryAgain; ?></strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                          </div>
+                        <?php endif; ?>
+                    
+                      <?php if($uploaded = $this->session->flashdata('signature_delete_success')): ?>
+                      <div class="alert alert-success alert-dismissible" role="alert">
+                        <strong><?php echo $uploaded; ?></strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <?php elseif($tryAgain = $this->session->flashdata('signature_not_uploaded')): ?>
+                          <div class="alert alert-danger alert-dismissible" role="alert">
+                          <strong><?php echo $tryAgain; ?></strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                          </div>
+                        <?php endif; ?>
+                </div>
+                <div class="col-md-12">
                   <div class="card mb-2">
                     <div class="card-body">
                         <span class="emp_edit_btn">
-                            <a class="" data-bs-toggle="modal" data-bs-target="<?php echo '#empEdit'.$empdata->main_employee_id; ?>" href="javascript:void(0);">
-                                <i class="bx bx-edit-alt me-1"></i>
+                            <a data-bs-toggle="modal" data-bs-target="<?php echo '#empEdit'.$empdata->main_employee_id; ?>" href="javascript:void(0);">
+                              <i class='bx bx-edit'></i>
                             </a>
                         </span>
                           <div class="d-flex align-items-start align-items-sm-center gap-4">
@@ -50,7 +73,7 @@
                             </div>
                             <?php if($empinfo): ?>
                                 <div class="emp-d-avg-btn">
-                                  <?php $main_avg= $empinfo->main_emp_avg; ?>
+                                  <?php $main_avg = $empinfo->main_emp_avg; ?>
                                   <?php if($main_avg <= 1): ?>
                                     <span class="badge bg-label-danger me-1">Not sufficient <?php echo $main_avg; ?> <i class='bx bx-tachometer' ></i></span>
                                   <?php elseif($main_avg > 1 && $main_avg <= 2): ?>
@@ -65,16 +88,39 @@
                                     <span class="badge bg-label-success me-1">Excellent <?php echo $main_avg; ?> <i class='bx bx-tachometer' ></i></span>
                                   <?php endif; ?>
 
-
-                                  <span class="print-btn-details">
-                                    <a href="<?php echo base_url('Admin/printEmpDetails/'.$empdata->main_employee_id); ?>" class="badge rounded-pill bg-blue"><i class='bx bx-printer'></i></a>
+                                  <span class="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                      <div class="dropdown-menu" style="">
+                                          <a class="dropdown-item" href="<?php echo base_url('Admin/printEmpDetails/'.$empdata->main_employee_id); ?>"><i class='bx bx-printer'></i> Print</a>
+                                          <?php if($signature_img!==0): ?>
+                                            <div class="signature_img_sec">
+                                                <!-- <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="<?php //echo '#updateSignature'.$empdata->main_employee_id; ?>" href="javascript:void(0);"><i class="bx bx-edit"></i> Edit Signature</a> -->
+                                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="<?php echo '#deleteSignature'.$empdata->main_employee_id; ?>" href="javascript:void(0);"><i class='bx bxs-trash' ></i> Delete Signature</a>
+                                            </div>
+                                          <?php else: ?>
+                                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="<?php echo '#addSignature'.$empdata->main_employee_id; ?>" href="javascript:void(0);"><i class='bx bx-pencil'></i> Add Signature</a>
+                                          <?php endif; ?>
+                                      </div>
                                   </span>
-
-
                                 </div>
                             <?php else: ?>
                             <?php endif; ?>
                         </div>
+
+                        <div class="emp_info">
+                            <?php if($empinfo): ?>
+                                <?php if($signature_img!==0): ?>
+                                  <div class="signature_img_sec">
+                                      <img src="<?php echo base_url($signature_img->p_signature_img); ?>" alt="">
+                                  </div>
+                                <?php else: ?>
+                                <?php endif; ?>
+                            <?php else: ?>
+                            <?php endif; ?>
+                        </div>
+
                       </div>
                     </div>
                     <hr class="my-0" />
@@ -143,7 +189,7 @@
                 <h6 class="text-muted">
                   Employee Performance
                   <a class="" data-bs-toggle="modal" data-bs-target="<?php echo '#empScoreEdit'.$empdata->main_employee_id; ?>" href="javascript:void(0);">
-                      <i class='bx bx-edit-alt me-1' data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="<span>Click and edit</span>"></i>
+                      <i class='bx bx-edit me-1' data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="<span>Click and edit</span>"></i>
                   </a>
                 </h6>
             
@@ -1556,13 +1602,6 @@
 
 
 
-
-
-
-
-
-
-
 <!-- Edit Employee Details -->
 
 <form action="<?php echo base_url('Admin/editEmpData'); ?>" method="POST" enctype="multipart/form-data">
@@ -1755,4 +1794,128 @@
   </div>
 </form>
 
-<!-- Start Edit Score Details -->
+<!-- Start Add Signature -->
+
+<form action="<?php echo base_url('Admin/uploadManagerSignature'); ?>" method="POST" enctype="multipart/form-data">
+  <div class="card-body">
+      <div class="row gy-3">
+          <div class="col-lg-4 col-md-6">
+              <div class="modal fade" id="<?php echo 'addSignature'.$empdata->main_employee_id; ?>" tabindex="-1" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="modalCenterTitle">Please upload you signature!!</h5>
+                          <button
+                              type="button"
+                              class="btn-close"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                          ></button>
+                      </div>
+                      <div class="card-body">
+                        <div class="align-items-start align-items-sm-center gap-2">
+                          <input type="hidden" name="employee_id" value="<?php echo $empdata->main_employee_id; ?>">
+                          <div>
+                              <input class="form-control" type="file" name="p_signature_img" id="formFile" required data-parsley-trigger="keyup">
+                          </div>
+                          <br>
+                          <p class="text-muted mb-0">Allowed JPG, JPEG or PNG. Image Resolution: 225px * 225px. Max size of 800K </p>
+                        </div>
+                      </div>
+                      <div class="modal-footer footer-flex">
+                          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                          Close
+                          </button>
+                          <button type="submit" class="btn btn-success">Upload Signature</button>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</form>
+
+<!-- End Signature -->
+
+<!-- Start Edit Signature -->
+
+<form action="<?php echo base_url('Admin/updateManagerSignature'); ?>" method="POST" enctype="multipart/form-data">
+  <div class="card-body">
+      <div class="row gy-3">
+          <div class="col-lg-4 col-md-6">
+              <div class="modal fade" id="<?php echo 'updateSignature'.$empdata->main_employee_id; ?>" tabindex="-1" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="modalCenterTitle">Update you signature!!</h5>
+                          <button
+                              type="button"
+                              class="btn-close"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                          ></button>
+                      </div>
+                      <div class="card-body">
+                        <div class="align-items-start align-items-sm-center gap-2">
+                          <input type="hidden" name="employee_id" value="<?php echo $empdata->main_employee_id; ?>">
+                          <div>
+                              <input class="form-control" type="file" name="p_signature_img" required>
+                          </div>
+                          <br>
+                          <p class="text-muted mb-0">Allowed JPG, JPEG or PNG. Image Resolution: 225px * 225px. Max size of 800K </p>
+                        </div>
+                      </div>
+                      <div class="modal-footer footer-flex">
+                          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                          Close
+                          </button>
+                          <button type="submit" class="btn btn-success">Update Signature</button>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</form>
+
+<!-- End Edit Signature -->
+
+<!-- Start Delete Signature -->
+
+<form action="<?php echo base_url('Admin/deleteManagerSignature'); ?>" method="POST" enctype="multipart/form-data">
+  <div class="card-body">
+      <div class="row gy-3">
+          <div class="col-lg-4 col-md-6">
+              <div class="modal fade" id="<?php echo 'deleteSignature'.$empdata->main_employee_id; ?>" tabindex="-1" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="modalCenterTitle">Delete Signature?</h5>
+                          <button
+                              type="button"
+                              class="btn-close"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                          ></button>
+                      </div>
+                      <input type="hidden" name="employee_id" value="<?php echo $empdata->main_employee_id; ?>">
+                      <div class="modal-footer footer-flex">
+                          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                          Close
+                          </button>
+                          <button type="submit" class="btn btn-danger">Delete</button>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</form>
+
+<!-- End Delete Signature -->

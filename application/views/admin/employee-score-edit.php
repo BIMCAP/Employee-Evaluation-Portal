@@ -1417,7 +1417,7 @@
                             </div>
                             <div class="mt-2">
                                 <button type="submit" class="btn btn-success me-2">Update changes</button>
-                                <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+                                <button type="reset" class="btn btn-outline-secondary">Reset</button>
                             </div>
                         </form>
                         </div>

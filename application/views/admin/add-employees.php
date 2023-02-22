@@ -1,7 +1,10 @@
 
           <div class="content-wrapper">
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"><a href="<?php echo base_url('Admin'); ?>"><i class="bx bx-left-arrow-alt"></i> Dashboard</a> / Employee Page /</span> Add Employee</h4>
+              <h4 class="fw-bold py-3 mb-1"><span class="text-muted fw-light"><a href="<?php echo base_url('Admin'); ?>"><i class="bx bx-left-arrow-alt"></i> Dashboard</a> / Employee Page /</span> Add Employee</h4>
+              <span class="emp-list-addbtn">
+                  <a href="<?php echo base_url('Admin/employeesList'); ?>" class="btn btn-outline-primary"><i class='bx bx-list-ul' ></i> Employee</a>
+              </span>
               <div class="row">
               <form id="formAccountSettings" method="POST" action="<?php echo base_url('Admin/postEmployeeData'); ?>"  data-parsley-validate data-toggle="validator" enctype="multipart/form-data">
                 <div class="col-md-12">
@@ -124,6 +127,18 @@
                             <label for="designation" class="form-label">Date Of Termination</label>
                             <input class="form-control" type="date" name="employee_dot" id="html5-date-input">
                           </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="designation" class="form-label">Employee Password <span class="isrequired">*</span></label>
+                            <input class="form-control" name="emp_password" type="text" id="html5-date-input" required data-parsley-trigger="keyup">
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="designation" class="form-label">Level</label>
+                            <select class="form-control" name="emp_level" id="">
+                                <option value="" selected disabled>Enter Level</option>
+                                <option value="2">Employee</option>
+                                <option value="3">Manager</option>
+                            </select>
+                          </div>
                           <div class="mb-3 col-md-12">
                             <label for="designation" class="form-label">Status <span class="isrequired">*</span></label>
                               <select class="form-select" name="employee_status" id="exampleFormControlSelect1" aria-label="Default select example" required data-parsley-trigger="keyup">
@@ -135,7 +150,7 @@
                         </div>
                         <div class="mt-2">
                           <button type="submit" class="btn btn-primary me-2">Save changes</button>
-                          <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+                          <button type="reset" class="btn btn-outline-secondary">Reset</button>
                         </div>
                     </div>
                   </div>

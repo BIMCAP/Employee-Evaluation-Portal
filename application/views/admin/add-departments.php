@@ -1,7 +1,10 @@
 
           <div class="content-wrapper">
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"><a href="<?php echo base_url('Admin'); ?>"><i class="bx bx-left-arrow-alt"></i> Dashboard</a> / Departments/</span> Add Departments</h4>
+              <h4 class="fw-bold py-3 mb-1"><span class="text-muted fw-light"><a href="<?php echo base_url('Admin'); ?>"><i class="bx bx-left-arrow-alt"></i> Dashboard</a> / Department Page/</span> Add Departments</h4>
+              <span class="emp-list-addbtn">
+                  <a href="<?php echo base_url('Admin/departmentsList'); ?>" class="btn btn-outline-primary"><i class='bx bx-list-ul' ></i> Department</a>
+              </span>
               <div class="row">
                 <div class="col-xl">
                 <?php if($uploaded = $this->session->flashdata('department_upload_success')): ?>

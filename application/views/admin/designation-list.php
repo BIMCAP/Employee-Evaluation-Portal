@@ -1,7 +1,9 @@
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"><a href="<?php echo base_url('Admin'); ?>"><i class="bx bx-left-arrow-alt"></i> Dashboard</a> / Designation Page /</span> Designation List</h4>
-
+    <h4 class="fw-bold py-3 mb-1"><span class="text-muted fw-light"><a href="<?php echo base_url('Admin'); ?>"><i class="bx bx-left-arrow-alt"></i> Dashboard</a> / Designation Page /</span> Designation List</h4>
+        <span class="emp-list-addbtn">
+            <a href="<?php echo base_url('Admin/addDesignation'); ?>" class="btn btn-outline-primary"><i class='bx bx-plus'></i> Designation</a>
+        </span>
         <div class="col-md-12">
             <?php if($uploaded = $this->session->flashdata('des_delete_success')): ?>
             <div class="alert alert-success alert-dismissible" role="alert">
