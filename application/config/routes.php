@@ -68,4 +68,10 @@ $route['admin/employees-performance-result-list'] = 'Admin/employeesPerformanceR
 $route['admin/print-employee-details'] = 'Admin/printEmpDetails';
 
 $route['home/index'] = 'Login/index';
+$route['home/employee-login'] = 'Login/employeeLogin';
+
+// employee controller
+$route['employee/employee-details-page'] = 'Employee/empDetailsPage';
+$route['employee/set-employees-performance'] = 'Employee/setEmpPerformance';
+$route['employee/show-employees-performance'] = 'Employee/showEmpPerformance';
 
