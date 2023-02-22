@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 10, 2023 at 06:06 AM
+-- Generation Time: Feb 20, 2023 at 09:16 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.1.30
 
@@ -68,7 +68,8 @@ INSERT INTO `departments` (`department_id`, `department_name`, `department_date`
 (7, 'Human Resources', '06-02-2023 12:48:35', 1),
 (8, 'BIMCAP Manila', '06-02-2023 12:48:46', 1),
 (9, 'BIMCAP Hong Kong', '06-02-2023 12:48:55', 1),
-(10, 'TEST D', '07-02-2023 08:47:22', 1);
+(10, 'TEST D', '07-02-2023 08:47:22', 1),
+(11, 'Marketing Department', '16-02-2023 19:09:13', 1);
 
 -- --------------------------------------------------------
 
@@ -94,7 +95,8 @@ INSERT INTO `designation` (`designation_id`, `designation_name`, `f_department_i
 (5, 'Web Developer', 4, '06-02-2023 07:36:19', 1),
 (6, 'Director', 5, '06-02-2023 12:49:42', 1),
 (7, 'BIM Manager', 5, '06-02-2023 12:49:50', 1),
-(8, 'BIM Coordinator', 5, '06-02-2023 12:50:03', 1);
+(8, 'BIM Coordinator', 5, '06-02-2023 12:50:03', 1),
+(9, 'Digital Marketing Manager', 11, '16-02-2023 19:10:39', 1);
 
 -- --------------------------------------------------------
 
@@ -117,8 +119,12 @@ CREATE TABLE `employee_performance` (
 --
 
 INSERT INTO `employee_performance` (`emp_performance_id`, `employee_id`, `emp_performance_start_date`, `emp_performance_end_date`, `main_emp_avg`, `performance_post_date`, `employee_performance_status`) VALUES
-(1, 14, '2023-01-16', '2023-02-09', 3.93, '09-02-2023 08:34:45', 1),
-(2, 11, '2023-02-01', '2023-02-09', 0.4, '09-02-2023 18:17:09', 1);
+(1, 14, '2023-01-16', '2023-02-09', 3.65, '09-02-2023 08:34:45', 1),
+(2, 11, '2023-02-01', '2023-02-09', 3.96, '09-02-2023 18:17:09', 1),
+(3, 18, '2022-09-13', '2023-02-01', 3.16, '16-02-2023 19:14:01', 1),
+(4, 17, '2022-09-29', '2023-02-01', 2.28, '16-02-2023 19:23:59', 1),
+(5, 19, '2022-11-01', '2022-10-13', 1.71, '16-02-2023 19:34:36', 1),
+(6, 16, '2023-02-23', '2023-03-02', 0.28, '17-02-2023 08:21:01', 1);
 
 -- --------------------------------------------------------
 
@@ -153,7 +159,10 @@ INSERT INTO `employee_table` (`main_employee_id`, `employee_first_name`, `employ
 (12, 'Albert Flores', 'Flores', 'albertflores@gmail.com', '+852 1236547896', '206, Sai Yeung Choi Street South ', 'Mong Kok', 'hk', '4', 'Web Developer', 'upload/2023/feb/03/user-1-ad58ce72.jpg', '2022-12-01', '', 1, '03-02-2023 11:35:03'),
 (13, 'Belle Ferguson', 'Ferguson', 'belleferguson@gmail.com', '1236547892', '206, Sai Yeung Choi Street South ', 'Mong Kok', 'jp', '2', 'Account Manager', 'upload/2023/feb/03/balle.png', '2023-01-13', '', 1, '03-02-2023 11:52:34'),
 (14, 'Nadeem', 'Babu', 'nadeem@bimcap.com', '088177 77405', 'Luchki para durg 491001', 'Durg', 'in', '4', 'Web Developer', 'upload/2023/feb/09/nadeemq.jpg', '2023-01-16', '', 1, '06-02-2023 07:37:14'),
-(16, 'Kevin', 'Cheng', 'k@abc.com', '+1 56785', 'ABC', 'ABC', 'us', '5', 'Director', 'upload/2023/feb/07/nadeemq.jfif', '2023-02-02', '', 1, '07-02-2023 08:47:04');
+(16, 'Kevin', 'Cheng', 'k@abc.com', '+1 56785', 'ABC', 'ABC', 'us', '5', 'Director', 'upload/2023/feb/07/nadeemq.jfif', '2023-02-02', '', 1, '07-02-2023 08:47:04'),
+(17, 'Thomas', 'Morin', 'thomas.morin@gmail.com', '+1 1234569857', '3421 West Ninth Street ', 'Waterloo', 'ca', '2', 'Account Manager', 'upload/2023/feb/16/thomas.jfif', '2021-09-16', '', 1, '16-02-2023 18:08:54'),
+(18, 'Elizabeth', 'Alford', 'elizabeth@gmail.com', '1236547896', '700 East University Avenue', 'Des Moines', 'bh', '11', 'Digital Marketing Manager', 'upload/2023/feb/16/spide2.jpg', '2022-11-17', '', 1, '16-02-2023 19:03:29'),
+(19, 'Jeffery', 'Gourlay', 'jeffery@gmail.com', '+1 1236547896', 'Port Neal Landing', 'Sergeant Bluff', 'us', '11', 'Digital Marketing Manager', 'upload/2023/feb/16/images.jfif', '2022-10-12', '', 1, '16-02-2023 19:32:52');
 
 -- --------------------------------------------------------
 
@@ -177,10 +186,14 @@ CREATE TABLE `p_adaptability_table` (
 --
 
 INSERT INTO `p_adaptability_table` (`p_adaptability_id`, `employee_id`, `adaptability_short_amount_of_time`, `adaptability_ability_to_adjust_depending`, `adaptability_work_on_multiple_projects`, `adaptability_learn_new_disciplines_software`, `p_adaptability_emp_avg`, `adaptability_comments`) VALUES
-(1, 14, 4, 5, 3, 2, 4.67, 'test'),
-(2, 14, 4, 5, 3, 2, 4.67, 'test'),
-(3, 11, NULL, NULL, NULL, NULL, 0, ''),
-(4, 11, NULL, NULL, NULL, NULL, 0, '');
+(1, 14, 4, 5, 3, 2, 3.5, 'test'),
+(2, 14, 4, 5, 3, 2, 3.5, 'test'),
+(3, 11, 4, 3, 5, 3, 3.75, 'test'),
+(4, 11, 4, 3, 5, 3, 3.75, 'test'),
+(5, 18, 3, 3, 2, 3, 2.75, 'test'),
+(6, 17, 2, 2, 2, 2, 2, 'test'),
+(7, 19, 2, 1, 2, 2, 1.75, 'Test'),
+(8, 16, NULL, NULL, NULL, NULL, 0, '');
 
 -- --------------------------------------------------------
 
@@ -211,7 +224,11 @@ INSERT INTO `p_communication_table` (`p_communication_id`, `employee_id`, `commu
 (1, 14, 4, 4, 3, 4, 3, 4, 'test', 3.67, '09-02-2023 08:34:15', 1),
 (2, 14, 4, 4, 3, 4, 3, 4, 'test', 3.67, '09-02-2023 08:34:45', 1),
 (3, 11, 3, 4, 3, 5, 4, 5, 'test', 4, '09-02-2023 18:15:34', 1),
-(4, 11, 4, 5, 3, 4, 5, 3, 'test', 4, '09-02-2023 18:17:09', 1);
+(4, 11, 3, 4, 3, 5, 4, 5, 'test', 4, '09-02-2023 18:17:09', 1),
+(5, 18, 2, 4, 2, 2, 4, 2, 'test', 2.67, '16-02-2023 19:14:01', 1),
+(6, 17, 2, 2, 2, 2, 2, 2, 'test', 2, '16-02-2023 19:23:59', 1),
+(7, 19, 2, 1, 2, 1, 2, 1, 'Test', 1.5, '16-02-2023 19:34:36', 1),
+(8, 16, 4, 3, 3, 3, 2, 2, '', 2.83, '17-02-2023 08:21:01', 1);
 
 -- --------------------------------------------------------
 
@@ -235,9 +252,13 @@ CREATE TABLE `p_creativity_problem_solving_table` (
 --
 
 INSERT INTO `p_creativity_problem_solving_table` (`p_creativity_problem_solving_table`, `employee_id`, `creativity_problem_solving_learn_new_project`, `creativity_problem_solving_depending_project_needs`, `creativity_problem_solving_work_multiple_projects`, `creativity_problem_solving_knowledge_to_new_challenges`, `p_creativity_problem_solving_emp_avg`, `creativity_problem_solving_comments`) VALUES
-(1, 14, 3, 4, 3, 4, 4.67, 'test'),
-(2, 14, 3, 4, 3, 4, 4.67, 'test'),
-(3, 11, NULL, NULL, NULL, NULL, 0, '');
+(1, 14, 3, 4, 3, 4, 3.5, 'test'),
+(2, 14, 3, 4, 3, 4, 3.5, 'test'),
+(3, 11, 4, 5, 4, 5, 4.5, 'test'),
+(4, 18, 3, 2, 3, 2, 2.5, 'test'),
+(5, 17, 1, 1, 1, 1, 1, 'test'),
+(6, 19, 2, 1, 2, 1, 1.5, 'Test'),
+(7, 16, NULL, NULL, NULL, NULL, 0, '');
 
 -- --------------------------------------------------------
 
@@ -262,8 +283,12 @@ CREATE TABLE `p_dependability_table` (
 INSERT INTO `p_dependability_table` (`p_dependability_id`, `employee_id`, `dependability_handle_a_team`, `dependability_handle_a_project`, `dependability_the_set_deadlines`, `dependability_emp_avg`, `dependability_comments`) VALUES
 (1, 14, 5, 4, 5, 4.67, 'test'),
 (2, 14, 5, 4, 5, 4.67, 'test'),
-(3, 11, NULL, NULL, NULL, 0, ''),
-(4, 11, NULL, NULL, NULL, 0, '');
+(3, 11, 4, 3, 4, 3.67, 'test'),
+(4, 11, 4, 3, 4, 3.67, 'test'),
+(5, 18, 4, 2, 3, 3, 'test'),
+(6, 17, 3, 2, 3, 2.67, 'test'),
+(7, 19, 2, 1, 2, 1.67, 'Test'),
+(8, 16, NULL, NULL, NULL, 0, '');
 
 -- --------------------------------------------------------
 
@@ -287,8 +312,12 @@ CREATE TABLE `p_initiative_proactive_table` (
 --
 
 INSERT INTO `p_initiative_proactive_table` (`p_initiative_proactive_id`, `employee_id`, `initiative_proactive_ability_to_learn_new_project`, `initiative_proactive_adjust_depending_on_the_project`, `initiative_proactive_work_on_multiple_projects`, `initiative_proactive_learn_new_disciplines_software`, `p_initiative_proactive_emp_avg`, `initiative_proactive_comments`) VALUES
-(1, 14, 3, 4, 4, 2, 3.25, 'test'),
-(2, 11, NULL, NULL, NULL, NULL, 0, '');
+(1, 14, 3, 4, 3, 2, 3, 'test'),
+(2, 11, 4, 5, 4, 5, 4.5, 'test'),
+(3, 18, 4, 3, 4, 3, 3.5, 'test'),
+(4, 17, 3, 2, 1, 2, 2, 'test'),
+(5, 19, 2, 1, 2, 1, 1.5, 'Test'),
+(6, 16, NULL, NULL, NULL, NULL, 0, '');
 
 -- --------------------------------------------------------
 
@@ -313,8 +342,12 @@ CREATE TABLE `p_knowledge_table` (
 INSERT INTO `p_knowledge_table` (`p_knowledge_id`, `employee_id`, `knowledge_standards_and_portfolio`, `knowledge_bim_project_requirements`, `knowledge_of_the_construction_industry`, `knowledge_emp_avg`, `knowledge_comments`) VALUES
 (1, 14, 3, 4, 4, 3.67, 'test'),
 (2, 14, 3, 4, 4, 3.67, 'test'),
-(3, 11, NULL, NULL, NULL, 0, ''),
-(4, 11, NULL, NULL, NULL, 0, '');
+(3, 11, 4, 3, 4, 3.67, 'test'),
+(4, 11, 4, 3, 4, 3.67, 'test'),
+(5, 18, 4, 4, 3, 3.67, 'test'),
+(6, 17, 2, 2, 2, 2, 'test'),
+(7, 19, 3, 2, 3, 2.67, 'Test'),
+(8, 16, NULL, NULL, NULL, 0, '');
 
 -- --------------------------------------------------------
 
@@ -339,8 +372,12 @@ CREATE TABLE `p_productivity_table` (
 INSERT INTO `p_productivity_table` (`productivity_id`, `employee_id`, `productivity_speed_of_modelling`, `productivity_absence_or_minimum`, `productivity_timelines_and_deadlines`, `productivity_emp_avg`, `productivity_comments`) VALUES
 (1, 14, 2, 4, 4, 3.33, 'test'),
 (2, 14, 2, 4, 4, 3.33, 'test'),
-(3, 11, NULL, NULL, NULL, 0, ''),
-(4, 11, NULL, NULL, NULL, 0, '');
+(3, 11, 3, 4, 3, 3.33, 'test'),
+(4, 11, 3, 4, 3, 3.33, 'test'),
+(5, 18, 4, 3, 4, 3.67, 'test'),
+(6, 17, 3, 3, 3, 3, 'test'),
+(7, 19, 2, 1, 2, 1.67, 'Test'),
+(8, 16, NULL, NULL, NULL, 0, '');
 
 -- --------------------------------------------------------
 
@@ -367,8 +404,34 @@ CREATE TABLE `p_quality_table` (
 INSERT INTO `p_quality_table` (`p_quality_id`, `employee_id`, `quality_attention_to_details`, `quality_mistakes_requiring_correction`, `quality_meets_the_expectations`, `quality_conducts_qa_qc`, `quality_follows_the_correct_workflow_set`, `quality_emp_avg`, `quality_comments`) VALUES
 (1, 14, 5, 4, 5, 4, 5, 3.33, 'test'),
 (2, 14, 5, 4, 5, 4, 5, 3.33, 'test'),
-(3, 11, NULL, NULL, NULL, NULL, NULL, 0, ''),
-(4, 11, NULL, NULL, NULL, NULL, NULL, 0, '');
+(3, 11, 4, 4, 5, 3, 5, 3.33, 'test'),
+(4, 11, 4, 4, 5, 3, 5, 3.33, 'test'),
+(5, 18, 5, 3, 4, 3, 2, 3.67, 'test'),
+(6, 17, 3, 3, 3, 3, 3, 3, 'test'),
+(7, 19, 1, 1, 1, 1, 1, 1.67, 'Test'),
+(8, 16, NULL, NULL, NULL, NULL, NULL, 0, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `p_signature`
+--
+
+CREATE TABLE `p_signature` (
+  `p_signature_id` int(11) NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `p_signature_img` varchar(200) NOT NULL,
+  `p_signature_date` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `p_signature`
+--
+
+INSERT INTO `p_signature` (`p_signature_id`, `employee_id`, `p_signature_img`, `p_signature_date`) VALUES
+(7, 11, 'upload/2023/feb/16/nadeem_s1.png', '16-02-2023 11:45:11'),
+(10, 17, 'upload/2023/feb/16/nadeem_s1.png', '16-02-2023 19:37:41'),
+(11, 19, 'upload/2023/feb/17/nadeem_s1.png', '17-02-2023 07:59:27');
 
 -- --------------------------------------------------------
 
@@ -390,10 +453,14 @@ CREATE TABLE `p_software_table` (
 --
 
 INSERT INTO `p_software_table` (`p_software_id`, `employee_id`, `software_bitrix_tasks_and_leaves`, `software_digital_tools_production_communication`, `software_emp_avg`, `software_comments`) VALUES
-(1, 14, 3, 4, 2.33, 'test'),
-(2, 14, 3, 4, 2.33, 'test'),
-(3, 11, NULL, NULL, 0, ''),
-(4, 11, NULL, NULL, 0, '');
+(1, 14, 3, 4, 3.5, 'test'),
+(2, 14, 3, 4, 3.5, 'test'),
+(3, 11, 4, 5, 4.5, 'test'),
+(4, 11, 4, 5, 4.5, 'test'),
+(5, 18, 4, 3, 3.5, 'test'),
+(6, 17, 3, 2, 2.5, 'test'),
+(7, 19, 2, 1, 1.5, 'Test'),
+(8, 16, NULL, NULL, 0, '');
 
 -- --------------------------------------------------------
 
@@ -418,8 +485,12 @@ CREATE TABLE `p_time_management_table` (
 INSERT INTO `p_time_management_table` (`p_time_management_id`, `employee_id`, `time_management_scheduled_work_shift`, `time_management_required_working_hours`, `time_management_deadlinesclearly_with_your_teammates`, `time_management_emp_avg`, `time_management_comments`) VALUES
 (1, 14, 4, 5, 4, 4.33, 'test'),
 (2, 14, 4, 5, 4, 4.33, 'test'),
-(3, 11, NULL, NULL, NULL, 0, ''),
-(4, 11, NULL, NULL, NULL, 0, '');
+(3, 11, 4, 5, 4, 4.33, 'test'),
+(4, 11, 4, 5, 4, 4.33, 'test'),
+(5, 18, 3, 2, 3, 2.67, 'test'),
+(6, 17, 3, 2, 3, 2.67, 'test'),
+(7, 19, 2, 1, 2, 1.67, 'Test'),
+(8, 16, NULL, NULL, NULL, 0, '');
 
 --
 -- Indexes for dumped tables
@@ -504,6 +575,12 @@ ALTER TABLE `p_quality_table`
   ADD PRIMARY KEY (`p_quality_id`);
 
 --
+-- Indexes for table `p_signature`
+--
+ALTER TABLE `p_signature`
+  ADD PRIMARY KEY (`p_signature_id`);
+
+--
 -- Indexes for table `p_software_table`
 --
 ALTER TABLE `p_software_table`
@@ -529,85 +606,91 @@ ALTER TABLE `admin_table`
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `designation`
 --
 ALTER TABLE `designation`
-  MODIFY `designation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `designation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `employee_performance`
 --
 ALTER TABLE `employee_performance`
-  MODIFY `emp_performance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `emp_performance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `employee_table`
 --
 ALTER TABLE `employee_table`
-  MODIFY `main_employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `main_employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `p_adaptability_table`
 --
 ALTER TABLE `p_adaptability_table`
-  MODIFY `p_adaptability_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `p_adaptability_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `p_communication_table`
 --
 ALTER TABLE `p_communication_table`
-  MODIFY `p_communication_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `p_communication_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `p_creativity_problem_solving_table`
 --
 ALTER TABLE `p_creativity_problem_solving_table`
-  MODIFY `p_creativity_problem_solving_table` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `p_creativity_problem_solving_table` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `p_dependability_table`
 --
 ALTER TABLE `p_dependability_table`
-  MODIFY `p_dependability_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `p_dependability_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `p_initiative_proactive_table`
 --
 ALTER TABLE `p_initiative_proactive_table`
-  MODIFY `p_initiative_proactive_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `p_initiative_proactive_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `p_knowledge_table`
 --
 ALTER TABLE `p_knowledge_table`
-  MODIFY `p_knowledge_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `p_knowledge_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `p_productivity_table`
 --
 ALTER TABLE `p_productivity_table`
-  MODIFY `productivity_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `productivity_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `p_quality_table`
 --
 ALTER TABLE `p_quality_table`
-  MODIFY `p_quality_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `p_quality_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `p_signature`
+--
+ALTER TABLE `p_signature`
+  MODIFY `p_signature_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `p_software_table`
 --
 ALTER TABLE `p_software_table`
-  MODIFY `p_software_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `p_software_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `p_time_management_table`
 --
 ALTER TABLE `p_time_management_table`
-  MODIFY `p_time_management_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `p_time_management_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
