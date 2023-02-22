@@ -13,4 +13,15 @@ class Login_model extends CI_Model {
         }
     }
 
+    public function checkEmpAuthLogin($email, $password){
+        $result = $this->db->where(['employee_email'=>$email, 'emp_password'=>$password])
+        ->get('employee_table');
+
+        if($result){
+            return $result->row()->main_employee_id;
+        }else{
+            return false;
+        }
+    }
+
 }

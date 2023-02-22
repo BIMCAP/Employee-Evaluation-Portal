@@ -11,6 +11,27 @@ class Admin_model extends CI_Model {
         return $q->num_rows();
     }
 
+    public function getTotalDepartment(){
+        $q = $this->db->select('*')
+        ->from('departments')
+        ->get();
+        return $q->num_rows();
+    }
+
+    public function getTotalDesignation(){
+        $q = $this->db->select('*')
+        ->from('designation')
+        ->get();
+        return $q->num_rows();
+    }
+
+    public function getTotalPerformance(){
+        $q = $this->db->select('*')
+        ->from('employee_performance')
+        ->get();
+        return $q->num_rows();
+    }
+
     public function getTopPerformance(){
         $query = $this->db->query("SELECT *, MAX(main_emp_avg) AS 'maximum_performance' FROM employee_performance INNER JOIN employee_table ON employee_performance.employee_id = employee_table.main_employee_id GROUP BY(main_emp_avg) DESC LIMIT 5;"); 
         return $query->result();
@@ -19,6 +40,23 @@ class Admin_model extends CI_Model {
     public function getLowPerformance(){
         $query = $this->db->query("SELECT *, MIN(main_emp_avg) AS 'maximum_performance' FROM employee_performance INNER JOIN employee_table ON employee_performance.employee_id = employee_table.main_employee_id GROUP BY(main_emp_avg) ASC LIMIT 5;"); 
         return $query->result();
+    }
+
+    // Chart 
+
+    public function getGratefulPerformance(){
+        $query = $this->db->query(" SELECT * FROM employee_performance WHERE employee_performance.main_emp_avg >= 3 "); 
+        return $query->num_rows();
+    }
+
+    public function getGoodPerformance(){
+        $query = $this->db->query(" SELECT * FROM employee_performance WHERE employee_performance.main_emp_avg > 2 AND employee_performance.main_emp_avg < 3 "); 
+        return $query->num_rows();
+    }
+
+    public function getAveragePerformance(){
+        $query = $this->db->query(" SELECT * FROM employee_performance WHERE employee_performance.main_emp_avg < 2 "); 
+        return $query->num_rows();
     }
 
     public function PerformanceResultDashboard(){
@@ -438,6 +476,43 @@ class Admin_model extends CI_Model {
         return $this->db->affected_rows();
 
     }
+
+    // Start Signature
+
+    public function postManagerSignature($data){
+        $data['p_signature_date'] = date("d-m-Y H:i:s");
+        return $this->db->insert('p_signature', $data); 
+    }
+
+    public function getManagerSignature($id){
+        $q = $this->db->select('*')
+        ->from('p_signature')
+        ->where('employee_id', $id)
+        ->group_by('p_signature.p_signature_id', "DESC")
+        ->get();
+        return $q->row();
+    }
+
+    // public function get_SignatureImg_id($ID){
+    //     $q = $this->db->select('p_signature_img')
+    //     ->from('p_signature')
+    //     ->where('employee_id', $ID)
+    //     ->get();
+    //     return $q->row();
+    // }
+
+    // public function editManagerSignature($data, $ID){
+    //     $signature_img = array('p_signature_img' => $data);
+    //     $this->db->where('employee_id', $ID);
+    //     $this->db->update('p_signature', $signature_img);
+    //     return $this->db->affected_rows();
+    // }
+
+    public function deleteSignatureDB($id){
+        return $this->db->delete('p_signature', ['employee_id' => $id]);   
+    }
+
+    // End Signature
 
 }
 ?>
