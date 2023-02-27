@@ -13,6 +13,14 @@ class Login extends CI_Controller {
             $this->load->view('home/include/footer');
         }
 
+
+        public function adminLogin(){
+            $this->load->view('home/include/header');
+            $this->load->view('home/admin-login');
+            $this->load->view('home/include/footer');
+        }
+
+
     public function authLogin(){
         $username = $this->input->post('username');
         $password = $this->input->post('password');
@@ -23,9 +31,8 @@ class Login extends CI_Controller {
             return redirect('Admin/index');
         }else{
             $this->session->set_flashdata('login_failed', 'Invalid Username/Password');
-            return redirect('Login/index');
+            return redirect('Login/adminLogin');
         }
-        
 
     }
 
