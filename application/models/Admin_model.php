@@ -176,6 +176,7 @@ class Admin_model extends CI_Model {
         ->where('main_employee_id', $id)
         ->get();
         return $q->row();
+        
     }
 
     public function getEmployeesPerformanceInfo($empId){
@@ -304,7 +305,7 @@ class Admin_model extends CI_Model {
         return $query->row()->employee_designation;
     }
 
-    public function uploadEmployeePerformance($data){
+    public function postEmployeePerformance($data){
         $data['performance_post_date'] = date("d-m-Y H:i:s");
         return $this->db->insert('employee_performance', $data); 
     }
@@ -343,52 +344,52 @@ class Admin_model extends CI_Model {
 
     // Start Performance Tables 
 
-    public function uploadEmployeeCommunication($data){
+    public function postEmployeeCommunication($data){
         $data['p_communication_post_date'] = date("d-m-Y H:i:s");
         return $this->db->insert('p_communication_table', $data); 
     }
 
-    public function uploadEmployeeProductivity($data){
+    public function postEmployeeProductivity($data){
         // $data['p_communication_post_date'] = date("d-m-Y H:i:s");
         return $this->db->insert('p_productivity_table', $data); 
     }
 
-    public function uploadEmployeeQuality($data){
+    public function postEmployeeQuality($data){
         // $data['p_communication_post_date'] = date("d-m-Y H:i:s");
         return $this->db->insert('p_quality_table', $data); 
     }
 
-    public function uploadEmployeeKnowledge($data){
+    public function postEmployeeKnowledge($data){
         // $data['p_communication_post_date'] = date("d-m-Y H:i:s");
         return $this->db->insert('p_knowledge_table', $data); 
     }
 
-    public function uploadEmployeeSoftware($data){
+    public function postEmployeeSoftware($data){
         // $data['p_communication_post_date'] = date("d-m-Y H:i:s");
         return $this->db->insert('p_software_table', $data); 
     }
 
-    public function uploadEmployeeDependability($data){
+    public function postEmployeeDependability($data){
         // $data['p_communication_post_date'] = date("d-m-Y H:i:s");
         return $this->db->insert('p_dependability_table', $data); 
     }
 
-    public function uploadEmployeeTimeManagement($data){
+    public function postEmployeeTimeManagement($data){
         // $data['p_communication_post_date'] = date("d-m-Y H:i:s");
         return $this->db->insert('p_time_management_table', $data); 
     }
 
-    public function uploadEmployeeAdaptability($data){
+    public function postEmployeeAdaptability($data){
         // $data['p_communication_post_date'] = date("d-m-Y H:i:s");
         return $this->db->insert('p_adaptability_table', $data); 
     }
 
-    public function uploadEmployeeInitiativeProactive($data){
+    public function postEmployeeInitiativeProactive($data){
         // $data['p_communication_post_date'] = date("d-m-Y H:i:s");
         return $this->db->insert('p_initiative_proactive_table', $data); 
     }
 
-    public function uploadEmployeeCreativityProblemSolving($data){
+    public function postEmployeeCreativityProblemSolving($data){
         // $data['p_communication_post_date'] = date("d-m-Y H:i:s");
         return $this->db->insert('p_creativity_problem_solving_table', $data); 
     }
