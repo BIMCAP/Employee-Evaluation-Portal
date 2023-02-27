@@ -3,8 +3,39 @@
     margin: 0px;
     box-sizing: border-box;
 }
+.text-primary {
+    color: #1b5ac5 !important;
+}
+.alert-primary {
+    background-color: #cbd8f1;
+    border-color: #3264c88c;
+    color: #3264c8;
+}
+.btn-outline-primary {
+    color: #1b5ac5;
+    border-color: #cbd8f1;
+    background: transparent;
+}
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: #3264c8;
+    border-color: #3264c8;
+    box-shadow: 0 0.125rem 0.25rem 0 rgb(50 100 200 / 57%);
+    transform: translateY(-1px);
+}
+.btn-check:focus + .btn-outline-primary, .btn-outline-primary:focus {
+    color: #fff;
+    background-color: #3264c8;
+    border-color: #3264c8;
+    box-shadow: none;
+    transform: translateY(0);
+}
 a {
     color: #3264c8;
+}
+.welcome-bimcap-head{
+    line-height: 38px;
+    font-size: 28px;
 }
 a:hover {
     color: #6c9dff;
@@ -242,7 +273,7 @@ span.radio-inline-num {
 }
 input.form-check-input.checked-edit {
     box-shadow: 0 2px 15px #c9c9c9;
-    border: 1px solid #2459c3;
+    border: 3px solid #2459c3;
 }
 .img-d-emp-print{
     width: 90px;
@@ -318,7 +349,59 @@ tr.padd_bb td {
     margin-right: 20px;
 }
 .text-swich-login a{
-   
     color: #fff;
     font-weight: 600;
+}
+.check-add-performance {
+    display: flex;
+    height: 600px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.avatar.avatar-online img {
+    width: 40px !important;
+    height: 40px !important;
+    object-fit: cover;
+}
+.start-page-login img {
+    max-width: 180px;
+}
+.start-page-login {
+    text-align: center;
+}
+.start-page-login h3 {
+    color: #fff;
+    font-size: 28px;
+    text-transform: uppercase;
+    margin-top: 12px;
+}
+.start-page-login a {
+    color: #ffe02f;
+    font-weight: 600;
+    background-color: #2964d9;
+    padding: 8px 50px;
+    border-radius: 3px;
+    transition: 0.6s;
+}
+.start-page-login a:hover {
+    background-color: #17449d;
+    transition: 0.6s;
+}
+.start-page-logo {
+    text-align: center;
+}
+.start-page-logo img {
+    max-width: 100px;
+    border-radius: 100%;
+    border: 2px solid #fff;
+    padding: 3px;
+}
+.h-90 {
+    height: 90% !important;
+}
+.avatar3 img {
+    width: 40px !important;
+    height: 40px !important;
+    object-fit: cover;
 }
